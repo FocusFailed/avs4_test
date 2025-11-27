@@ -1,6 +1,7 @@
 # Чтобы запустить:
 
 git clone https://github.com/FocusFailed/avs4_test.git
+
 cd avs4_test
 
 docker-compose up --build
