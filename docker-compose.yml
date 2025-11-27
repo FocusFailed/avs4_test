@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_DB: contacts_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    environment:
+      POSTGRES_DB: contacts_db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST: db
+      SECRET_KEY: key
+      FLASK_APP: manage.py
+    ports:
+      - "5555:5000"
+    depends_on:
+      - db
+    command: ["gunicorn", "--bind", "0.0.0.0:5000", "manage:app"]
+
+volumes:
+  postgres_data:
