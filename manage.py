@@ -1,4 +1,4 @@
-from app import app, db
+from work_files.app import app, db
 
 
 @app.cli.command("create-tables")

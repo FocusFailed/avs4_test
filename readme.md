@@ -5,7 +5,8 @@ git clone https://github.com/FocusFailed/avs4_test.git
 
 cd avs4_test
 
-docker-compose up --build
+sudo systemctl start docker
+sudo docker-compose up --build
 ```
 
 # Открыть в браузере
